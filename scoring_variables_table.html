@@ -1,0 +1,132 @@
+
+<style>
+  .tbl-wrap { padding: 1rem 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; table-layout: fixed; }
+  thead th { font-size: 11px; font-weight: 500; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.04em; padding: 8px 12px; border-bottom: 1.5px solid var(--color-border-primary); background: var(--color-background-secondary); text-align: left; }
+  tbody tr { border-bottom: 0.5px solid var(--color-border-tertiary); }
+  tbody tr:last-child { border-bottom: none; }
+  tbody td { padding: 10px 12px; vertical-align: top; color: var(--color-text-primary); line-height: 1.5; }
+  .num { font-size: 11px; font-weight: 500; color: var(--color-text-secondary); width: 28px; }
+  .col-var { width: 140px; }
+  .col-raw { width: 120px; }
+  .col-dir { width: 72px; }
+  .col-src { width: 90px; }
+  .col-note { }
+  .var-name { font-family: var(--font-mono); font-size: 12px; color: var(--color-text-primary); display: block; margin-bottom: 3px; }
+  .var-label { font-size: 12px; color: var(--color-text-secondary); }
+  .badge { display: inline-block; font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 20px; white-space: nowrap; }
+  .badge-up { background: #EAF3DE; color: #3B6D11; }
+  .badge-down { background: #E6F1FB; color: #185FA5; }
+  .badge-src-osm { background: #FAEEDA; color: #854F0B; }
+  .badge-src-epa { background: #EEEDFE; color: #3C3489; }
+  .badge-src-zillow { background: #FAECE7; color: #993C1D; }
+  .badge-src-tiger { background: #E1F5EE; color: #0F6E56; }
+  .badge-src-biz { background: #FBEAF0; color: #993556; }
+  .note-text { font-size: 12px; color: var(--color-text-secondary); line-height: 1.5; }
+  .pending { display: inline-block; font-size: 11px; color: var(--color-text-warning); background: var(--color-background-warning); padding: 1px 6px; border-radius: 4px; margin-top: 3px; }
+</style>
+
+<div class="tbl-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th class="num">#</th>
+        <th class="col-var">Variable</th>
+        <th class="col-raw">Raw column</th>
+        <th class="col-dir">Direction</th>
+        <th class="col-src">Source</th>
+        <th class="col-note">Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="num">1</td>
+        <td><span class="var-name">s_cafe</span><span class="var-label">Cafe &amp; boba access</span></td>
+        <td><code style="font-size:11px">cnt_cafe</code></td>
+        <td><span class="badge badge-up">↑ higher</span></td>
+        <td><span class="badge badge-src-osm">OSM</span></td>
+        <td class="note-text">Count of cafes and tea/boba shops within tract. Tags: <code style="font-size:11px">amenity=cafe</code>, <code style="font-size:11px">shop=tea</code>. Boba merged into this category (no separate boba score).</td>
+      </tr>
+      <tr>
+        <td class="num">2</td>
+        <td><span class="var-name">s_gym</span><span class="var-label">Gym access</span></td>
+        <td><code style="font-size:11px">cnt_gym</code></td>
+        <td><span class="badge badge-up">↑ higher</span></td>
+        <td><span class="badge badge-src-osm">OSM</span></td>
+        <td class="note-text">Count of fitness centres within tract. Tag: <code style="font-size:11px">leisure=fitness_centre</code>.</td>
+      </tr>
+      <tr>
+        <td class="num">3</td>
+        <td><span class="var-name">s_grocery</span><span class="var-label">Grocery access</span></td>
+        <td><code style="font-size:11px">cnt_grocery</code></td>
+        <td><span class="badge badge-up">↑ higher</span></td>
+        <td><span class="badge badge-src-osm">OSM</span></td>
+        <td class="note-text">Count of supermarkets and grocery stores. Tags: <code style="font-size:11px">shop=supermarket</code>, <code style="font-size:11px">shop=grocery</code>.</td>
+      </tr>
+      <tr>
+        <td class="num">4</td>
+        <td><span class="var-name">s_park</span><span class="var-label">Park access</span></td>
+        <td><code style="font-size:11px">cnt_park</code></td>
+        <td><span class="badge badge-up">↑ higher</span></td>
+        <td><span class="badge badge-src-osm">OSM</span></td>
+        <td class="note-text">Count of parks within tract. Tag: <code style="font-size:11px">leisure=park</code>.</td>
+      </tr>
+      <tr>
+        <td class="num">5</td>
+        <td><span class="var-name">s_transit</span><span class="var-label">Transit access</span></td>
+        <td><code style="font-size:11px">cnt_transit</code></td>
+        <td><span class="badge badge-up">↑ higher</span></td>
+        <td><span class="badge badge-src-osm">OSM</span></td>
+        <td class="note-text">Combined count of bus stops (<code style="font-size:11px">highway=bus_stop</code>) and rail stations (<code style="font-size:11px">railway=station</code>). Roadmap's separate bus_stop and train_station are merged here.</td>
+      </tr>
+      <tr>
+        <td class="num">6</td>
+        <td><span class="var-name">s_restaurant</span><span class="var-label">Restaurant access</span></td>
+        <td><code style="font-size:11px">cnt_restaurant</code></td>
+        <td><span class="badge badge-up">↑ higher</span></td>
+        <td><span class="badge badge-src-biz">Business Tax</span></td>
+        <td class="note-text">Count of restaurants from SD Business Tax dataset (teammate's data). Not in original roadmap — added as scope extension.</td>
+      </tr>
+      <tr>
+        <td class="num">7</td>
+        <td><span class="var-name">s_beach</span><span class="var-label">Beach access</span></td>
+        <td><code style="font-size:11px">cnt_beach</code></td>
+        <td><span class="badge badge-up">↑ higher</span></td>
+        <td><span class="badge badge-src-biz">Business Tax</span></td>
+        <td class="note-text">Count of beach access points and lifeguard stations (teammate's data). <span class="pending">⚠ pending — currently all zeros</span></td>
+      </tr>
+      <tr>
+        <td class="num">8</td>
+        <td><span class="var-name">s_walk</span><span class="var-label">Walkability</span></td>
+        <td><code style="font-size:11px">walk_index</code></td>
+        <td><span class="badge badge-up">↑ higher</span></td>
+        <td><span class="badge badge-src-epa">EPA</span></td>
+        <td class="note-text">EPA National Walkability Index (2021), scale 1–20. Block groups aggregated to tract level by mean. Missing tracts filled via parent/grandparent GEOID imputation.</td>
+      </tr>
+      <tr>
+        <td class="num">9</td>
+        <td><span class="var-name">s_coast</span><span class="var-label">Coastline proximity</span></td>
+        <td><code style="font-size:11px">coast_dist_m</code></td>
+        <td><span class="badge badge-down">↓ lower</span></td>
+        <td><span class="badge badge-src-tiger">TIGER</span></td>
+        <td class="note-text">Euclidean distance (meters) from tract centroid to nearest point on California coastline (TIGER/Line 2023). Inverted at normalization: closer = higher score.</td>
+      </tr>
+      <tr>
+        <td class="num">10</td>
+        <td><span class="var-name">s_downtown</span><span class="var-label">Downtown proximity</span></td>
+        <td><code style="font-size:11px">downtown_dist_m</code></td>
+        <td><span class="badge badge-down">↓ lower</span></td>
+        <td><span class="badge badge-src-tiger">Computed</span></td>
+        <td class="note-text">Euclidean distance (meters) from tract centroid to downtown SD (Civic Center, −117.1611, 32.7157). Inverted at normalization: closer = higher score.</td>
+      </tr>
+      <tr>
+        <td class="num">11</td>
+        <td><span class="var-name">s_rent</span><span class="var-label">Rent affordability</span></td>
+        <td><code style="font-size:11px">rent_zori</code></td>
+        <td><span class="badge badge-down">↓ lower</span></td>
+        <td><span class="badge badge-src-zillow">Zillow ZORI</span></td>
+        <td class="note-text">ZORI rent index, April 2026, joined via ZCTA polygon spatial join. 25 missing tracts imputed with county median. Inverted at normalization: lower rent = higher score.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
